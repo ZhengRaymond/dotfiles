@@ -7,9 +7,9 @@ _Follow as needed_
 3. Install brew
  * LinuxBrew: `sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"\n`
  * HomeBrew: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-4. `brew install ctags`
-5. `brew install tmux`
-6. Set fonts if desired (Anonymous Pro) in iTerm: `Command+,` > Profiles > Text > Change Font 
+4. `brew install --HEAD universal-ctags/universal-ctags/universal-ctags\n`
+5. cd into Etsyweb, then run `ctags -f php.tags --exclude="(htdocs.*)|node_modules|templates|vendor|translations|cron.d|build|docs|Shipping|Generated|.git|Atlas|Geonames|Controller|CustomShops|REST|Storefronts|Discovery|Search2" -R`
+6. `brew install tmux`
 
 
 ## useful links:

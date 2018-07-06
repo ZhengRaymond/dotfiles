@@ -1,4 +1,8 @@
-export ZSH="/home/rzheng/.oh-my-zsh"
+if (( $(hostname) == 'rzheng.vm.ny2.etsy.com')) then;
+    export ZSH="/home/rzheng/.oh-my-zsh"
+else
+    export ZSH="/Users/rzheng/.oh-my-zsh"
+fi
 
 # general settings
 stty -ixon
