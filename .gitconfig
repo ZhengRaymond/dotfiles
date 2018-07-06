@@ -2,3 +2,5 @@
 	name = Raymond Zheng
 	email = zhengraymond@etsy.com
 [alias]
+[core]
+	excludesfile = /home/rzheng/.gitignore_global

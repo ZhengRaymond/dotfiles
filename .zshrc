@@ -77,16 +77,6 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-# third-party files
-if [[ $- == *i* ]] ; then
-  source "$HOME/.zsh/oh-my-zsh/completion.zsh"
-  source "$HOME/.zsh/oh-my-zsh/git.zsh"
-  source "$HOME/.zsh/oh-my-zsh/themes-and-appearance.zsh"
-
-  # must be sourced at the end
-  source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-
 # theme
 ZSH_THEME="avit"
 #ind="❯❯"
@@ -120,3 +110,15 @@ function spectrum_ls() {
     print -P -- "$code: %{%F{$code}%}$ZSH_SPECTRUM_TEXT%{$reset_color%}"
   done
 }
+
+
+# third-party files
+if [[ $- == *i* ]] ; then
+  source "$HOME/.zsh/oh-my-zsh/completion.zsh"
+  source "$HOME/.zsh/oh-my-zsh/git.zsh"
+  #source "$HOME/.zsh/oh-my-zsh/themes-and-appearance.zsh"
+
+  # must be sourced at the end
+  source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+

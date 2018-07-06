@@ -12,6 +12,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rking/ag.vim'
+Plugin 'StanAngeloff/php.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,23 +86,15 @@ vnoremap <c-k> <esc>:bn<cr>
 "let g:multi_cursor_use_default_mapping=0
 "let g:multi_cursor_quit_key='<Esc>'
 
+" ag.vim
+"let g:ag_prg="${ETSYWEB_DIR} --vimgrep" 
+let g:ag_working_path_mode="r"
+
 " ctrl p
 let g:ctrlp_max_files=50000
 let g:ctrlp_max_depth=40
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-set grepprg=ag\ --nogroup\ --nocolor
-
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-" " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
-
-"let g:ctrlp_custom_ignore = {
-"  \ 'dir':  '\v[\/]\.(git|hg|svn)$|htdocs|build$|excluded|node_modules|vendor|translation|templates|docs|cron.d',
-"  \ 'file': '\v\.(exe|so|dll)$|[^(.php)]$',
-"  \ 'link': '',
-"  \ }
 
 " gitgutter
 let g:gitgutter_async = 0
