@@ -14,7 +14,12 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
 Plugin 'StanAngeloff/php.vim'
-
+Plugin '2072/PHP-Indenting-for-VIm'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'dracula/vim'
+"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -62,7 +67,7 @@ autocmd InsertEnter,InsertLeave * :set invrelativenumber
 
 " color scheme
 set t_Co=256
-colorscheme smyck
+colorscheme dracula
 set colorcolumn=81,101
 highlight ColorColumn ctermbg=236
 highlight SignColumn cterm=NONE ctermbg=NONE
@@ -119,7 +124,14 @@ nnoremap <silent> <leader>l :Lines<cr>
 nnoremap <silent> <leader>d :GFiles<cr>
 "nnoremap <silent> <leader>c :BCommits<cr>
 
+" easytags
+:autocmd FileType python let b:easytags_auto_highlight = 0
+
 " ale
+let g:ale_pattern_options = {
+\   '.*\.json$': {'ale_enabled': 0},
+\   '.*some/folder/.*\.js$': {'ale_enabled': 0},
+\}
 let g:ale_set_balloons = 0
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '✘❯'
@@ -168,3 +180,24 @@ set noshowmode
 set timeoutlen=1000
 set ttimeoutlen=0
 set laststatus=2
+
+" auto update ctags
+function! DelTagOfFile(file)
+  let fullpath = a:file
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let f = substitute(fullpath, cwd . "/", "", "")
+  let f = escape(f, './')
+  let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
+  let resp = system(cmd)
+endfunction
+
+function! UpdateTags()
+  let f = expand("%:p")
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let cmd = 'ctags -a -f ' . tagfilename . ' --c++-kinds=+p --fields=+iaS --extra=+q ' . '"' . f . '"'
+  call DelTagOfFile(f)
+  let resp = system(cmd)
+endfunction
+autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()

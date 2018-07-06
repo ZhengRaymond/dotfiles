@@ -25,6 +25,9 @@ alias ga='git add .'
 alias ep='etsync push'
 alias vi='vim'
 alias vimbroken='vim -u NONE -U NONE -N -i NONE'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+
 
 # key-bindings
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -65,7 +68,8 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 [[ -z "$HISTFILE" ]] && export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=20000
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000000
 export SAVEHIST=$HISTSIZE
 
 setopt append_history

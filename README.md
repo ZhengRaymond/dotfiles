@@ -9,7 +9,7 @@ _Follow as needed_
  * HomeBrew: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 4. `brew install ctags`
 5. `brew install tmux`
-
+6. Set fonts if desired (Anonymous Pro) in iTerm: `Command+,` > Profiles > Text > Change Font 
 
 
 ## useful links:
@@ -18,7 +18,8 @@ _Follow as needed_
 - [Search and replace](http://vim.wikia.com/wiki/Search_and_replace)
 - [Normal mode commands](https://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm)
 - [PHP for Vim](http://blog.joncairns.com/2012/05/using-vim-as-a-php-ide/)
-
+- Some dotfiles:
+ * [ronakg](https://github.com/ronakg/dotfiles)
 
 
 ## Ag.vim
