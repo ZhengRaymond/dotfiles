@@ -17,7 +17,7 @@ Plugin 'StanAngeloff/php.vim'
 Plugin '2072/PHP-Indenting-for-VIm'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-easytags'
 Plugin 'dracula/vim'
 "
 " All of your Plugins must be added before the following line
@@ -68,6 +68,7 @@ autocmd InsertEnter,InsertLeave * :set invrelativenumber
 " color scheme
 set t_Co=256
 colorscheme dracula
+colorscheme elflord
 set colorcolumn=81,101
 highlight ColorColumn ctermbg=236
 highlight SignColumn cterm=NONE ctermbg=NONE

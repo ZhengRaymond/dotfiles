@@ -1,13 +1,7 @@
-if (( $(hostname) == 'rzheng.vm.ny2.etsy.com')) then;
-    export ZSH="/home/rzheng/.oh-my-zsh"
-else
-    export ZSH="/Users/rzheng/.oh-my-zsh"
-fi
+export ZSH="$HOME/.oh-my-zsh"
 
 # general settings
-stty -ixon
 [[ ":$PATH:" != *":$HOME/.bin:"* ]] && export PATH="$PATH:$HOME/.bin"
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 export PAGER="less"
 export LESS="-R"
 export EDITOR="vim"
@@ -20,10 +14,6 @@ alias cdr='cd $(git rev-parse --show-toplevel 2>/dev/null)'
 alias pbcopy='xclip -sel clip'
 alias gists='git diff --staged | gist -t diff'
 alias gcan='git commit --amend --no-edit'
-local ETSYWEB_DIR="${HOME}/development/Etsyweb/"
-alias ce='cd "$ETSYWEB_DIR"'
-alias cg='cd "${ETSYWEB_DIR}phplib/GoogleAds/AdWordsSDK"'
-alias cgt='cd "${ETSYWEB_DIR}tests/phpunit/GoogleAds/AdWordsSDK"'
 alias gs='git status'
 alias ga='git add .'
 alias ep='etsync push'
@@ -57,8 +47,9 @@ bindkey "^f" forward-word
 bindkey "^b" backward-word
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
-bindkey "^?" backward-delete-char
-bindkey "^h" backward-delete-char
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+bindkey "^X" delete-char
 
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   autoload -U up-line-or-beginning-search
@@ -85,40 +76,11 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-# theme
-ZSH_THEME="avit"
-#ind="❯❯"
-#rtc="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
-#PROMPT=' %{$fg_bold[cyan]%}%c $(git_prompt_info)${rtc}${ind}%{$reset_color%} '
-local host_name="%{$fg[cyan]%}%n@%M:"
-local path_string="%{$fg[yellow]%}%~"
-PROMPT='${host_name} ${path_string}%(?.%F{magenta}.%F{red}) ❯ %f'
-
-#ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
-#ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-#ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%})%{$fg[yellow]%}✗ "
-#ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}) "
-
 # autocomplete:
 autoload -U compinit && compinit
 
 # settings:
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source $ZSH/oh-my-zsh.sh
-
-
-# colors:
-ZSH_SPECTRUM_TEXT=${ZSH_SPECTRUM_TEXT:-Arma virumque cano Troiae qui primus ab oris}
-
-# Show all 256 colors with color number
-function spectrum_ls() {
-  for code in {000..255}; do
-    print -P -- "$code: %{%F{$code}%}$ZSH_SPECTRUM_TEXT%{$reset_color%}"
-  done
-}
-
 
 # third-party files
 if [[ $- == *i* ]] ; then
@@ -129,4 +91,13 @@ if [[ $- == *i* ]] ; then
   # must be sourced at the end
   source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+ZSH_THEME="avit"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $ZSH/oh-my-zsh.sh
+
 
