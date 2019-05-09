@@ -92,12 +92,29 @@ if [[ $- == *i* ]] ; then
   source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
 ZSH_THEME="avit"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+PATH=~/bin:$PATH
+
+alias dev='tssh devbox'
 source $ZSH/oh-my-zsh.sh
 
 
+### QUORA ONLY SHIT ##########
+if [[ $(whoami) == 'rzheng' ]] ; then 
+    echo "quora"
+    ### DEV BOX ONLY:
+    if [[ $(hostname | cut -c1-9) == 'devshared' ]] ; then 
+        echo "devbox"
+        alias nst="nosetests -sv --with-id --id-file=/tmp/.noseids"
+        alias nsf="nosetests -sv --failed --id-file=/tmp/.noseids"
+        alias nsx="nosetests -sxv"
+    fi
+fi
