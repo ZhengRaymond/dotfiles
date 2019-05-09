@@ -113,6 +113,7 @@ if [[ $(whoami) == 'rzheng' ]] ; then
     ### DEV BOX ONLY:
     if [[ $(hostname | cut -c1-9) == 'devshared' ]] ; then 
         echo "devbox"
+        export PS1="%{$fg[green]%}[devbox] $PS1"
         alias nst="nosetests -sv --with-id --id-file=/tmp/.noseids"
         alias nsf="nosetests -sv --failed --id-file=/tmp/.noseids"
         alias nsx="nosetests -sxv"
