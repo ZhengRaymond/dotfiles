@@ -4,21 +4,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'easymotion/vim-easymotion'
+"Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'w0rp/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
-Plugin 'StanAngeloff/php.vim'
-Plugin '2072/PHP-Indenting-for-VIm'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
 Plugin 'dracula/vim'
+Plugin 'uCpp.vim'
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,7 +51,7 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set shiftround
-set expandtab
+set noexpandtab
 set autoindent
 set backspace=indent,eol,start
 
@@ -109,11 +104,11 @@ let g:gitgutter_async = 0
 let g:slime_target="tmux"
 
 " easymotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1
-map <Leader>w <Plug>(easymotion-w)
-map <Leader>b <Plug>(easymotion-b)
-map f <Plug>(easymotion-sn)
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+"let g:EasyMotion_smartcase = 1
+"map <Leader>w <Plug>(easymotion-w)
+"map <Leader>b <Plug>(easymotion-b)
+"map f <Plug>(easymotion-sn)
 
 " tcomment
 nnoremap <silent> <leader>x :TComment<cr>
@@ -170,6 +165,8 @@ let g:ale_php_phpcs_standard =
 \     expand($HOME) . '/development/Etsyweb/tests/standards/stable-ruleset.xml'
 " bufferline
 set showtabline=2
+set list lcs=tab:\|\ 
+set list
 let g:bufferline_echo = 0
 let g:bufferline_show_bufnr = 0
 let g:bufferline_modified = '✱'

@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rzheng/development/Etsyweb/.git/hooks'
 let g:netrw_dirhist_2='/home/rzheng/development/Etsyweb/phplib/Favorites/Neu'
 let g:netrw_dirhist_3='/home/rzheng/.oh-my-zsh'
+let g:netrw_dirhist_4='/home/ray/.zsh'
+let g:netrw_dirhist_5='/mnt/c/Users/zheng/workspace/cs343/.git'
